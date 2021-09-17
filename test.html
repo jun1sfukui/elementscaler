@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="jp">
+<head>
+  <meta charset="utf-8" />
+  <script src="elementscaler.js"></script>
+
+  <title>ElementScaler Test</title>
+  <meta name="description" content="ElementScaler Test" />
+  <style>
+  	#main {
+  		border : 1px solid black;
+  		width : 50%;
+  	}
+  
+  </style>
+  
+</head>
+<body>
+<h1>ElementScaler Test</h1>
+<div id="nav">
+	<button id="zoomDown">ZoomDown</button>
+	<button id="zoomUp">ZoomUp</button>
+	<button id="reset">Reset</button>
+	<button id="zoom">200%</button>
+</div>
+<div id="main">
+Zooming Area<br />
+<ul>
+	<li>List 1</li>
+	<li>List 2</li>
+</ul>
+</div>
+
+<script type="text/javascript">
+	const btnZoomUp = document.querySelector("#zoomUp");
+	const btnZoomDown = document.querySelector("#zoomDown");
+	const btnReset = document.querySelector("#reset");
+	const btnZoom = document.querySelector("#zoom");
+	
+	const es = new ElementScaler({
+		selector : "#main",
+		max : 2,
+		min : 0.5,
+		diff : 0.25
+	});
+	
+	btnZoomUp.addEventListener("click", function(){ es.zoomUp() });
+	btnZoomDown.addEventListener("click", function(){ es.zoomDown() });
+	btnReset.addEventListener("click", function(){ es.reset() });
+	btnZoom.addEventListener("click", function(){ es.zoom(2) });
+
+</script>
+
+</body>
+</html>
